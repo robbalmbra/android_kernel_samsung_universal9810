@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 4.9.224 Kernel Configuration
+# Linux/arm64 4.9.227 Kernel Configuration
 #
 CONFIG_ARM64=y
 CONFIG_64BIT=y
@@ -4313,6 +4313,7 @@ CONFIG_SEC_DEBUG_LAST_KMSG=y
 CONFIG_SEC_DEBUG_INIT_LOG=y
 # CONFIG_SEC_DEBUG_PPMPU is not set
 CONFIG_SEC_DEBUG_BRANCH_VERIFIER=y
+# CONFIG_SEC_DEBUG_INIT_EXIT_PANIC is not set
 CONFIG_SEC_DEBUG_SOFTDOG_PWDT=y
 CONFIG_SEC_BOOTSTAT=y
 
@@ -5081,6 +5082,7 @@ CONFIG_GATOR=y
 #
 # CONFIG_MPSD is not set
 # CONFIG_MPSD_DEBUG is not set
+# CONFIG_TZIC is not set
 
 #
 # Firmware Drivers
