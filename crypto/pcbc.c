@@ -14,7 +14,6 @@
  *
  */
 
-#include <crypto/algapi.h>
 #include <linux/err.h>
 #include <linux/init.h>
 #include <linux/kernel.h>
