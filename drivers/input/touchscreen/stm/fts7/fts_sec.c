@@ -97,9 +97,6 @@ static void report_rate(void *device_data);
 static void interrupt_control(void *device_data);
 #endif
 
-#if defined(CONFIG_INPUT_BOOSTER) || defined(TOUCH_BOOSTER_DVFS)
-static void boost_level(void *device_data);
-#endif
 static void set_lpgw_mode(void *device_data);
 static void set_lowpower_mode(void *device_data);
 static void set_deepsleep_mode(void *device_data);
@@ -233,9 +230,6 @@ struct ft_cmd ft_commands[] = {
 	{FT_CMD("report_rate", report_rate),},
 #if !defined(CONFIG_SAMSUNG_PRODUCT_SHIP)
 	{FT_CMD("interrupt_control", interrupt_control),},
-#endif
-#if defined(CONFIG_INPUT_BOOSTER)|| defined(TOUCH_BOOSTER_DVFS)
-	{FT_CMD("boost_level", boost_level),},
 #endif
 	{FT_CMD("set_lpgw_mode", set_lpgw_mode),},
 	{FT_CMD("set_lowpower_mode", set_lowpower_mode),},
@@ -4039,16 +4033,10 @@ out:
 }
 #endif
 
-#if defined(CONFIG_INPUT_BOOSTER)
-static void boost_level(void *device_data)
-{
 	struct fts_ts_info *info = (struct fts_ts_info *)device_data;
 	char buff[CMD_STR_LEN] = { 0 };
 	unsigned char max_level = 4;
 
-#ifdef CONFIG_INPUT_BOOSTER
-	max_level = BOOSTER_LEVEL_MAX;
-#endif
 
 	set_default_result(info);
 
@@ -4056,9 +4044,6 @@ static void boost_level(void *device_data)
 		snprintf(buff, sizeof(buff), "NG");
 		info->cmd_state = CMD_STATUS_FAIL;
 	} else {
-#ifdef CONFIG_INPUT_BOOSTER
-		change_booster_level_for_tsp(info->cmd_param[0]);
-#endif
 		tsp_debug_dbg(false, &info->client->dev,
 						"%s %d\n",
 						__func__, info->cmd_param[0]);
